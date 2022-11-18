@@ -15,6 +15,12 @@ jobs:
       - node/install:
           node-version: '14.15'         
       - checkout
+
+      # TODO: install aws cli   
+      - run:
+          name: install aws cli
+          command: sudo apt install python3-pip && sudo pip3 install awsebcli --upgrade
+
       # Use root level package.json to install dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
@@ -38,11 +44,11 @@ jobs:
       - run:
           name: API Build
           command: npm run api:build
-     
+
       # TODO: deploy frontend    
       - run:
           name: deploy frontend
-          command: pip3 install awsebcli && npm run frontend:deploy
+          command: npm run frontend:deploy
 
   # deploy step will run only after manual approval
   deploy:
