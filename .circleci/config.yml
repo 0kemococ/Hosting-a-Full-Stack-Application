@@ -42,7 +42,7 @@ jobs:
       # TODO: deploy frontend    
       - run:
           name: deploy frontend
-          command: npm run frontend:deploy
+          command: npm install aws-cli && npm run frontend:deploy
 
   # deploy step will run only after manual approval
   deploy:
