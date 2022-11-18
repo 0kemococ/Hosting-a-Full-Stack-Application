@@ -38,6 +38,11 @@ jobs:
       - run:
           name: API Build
           command: npm run api:build
+     
+      # TODO: deploy frontend    
+      - run:
+          name: deploy frontend
+          command: npm run frontend:deploy
 
   # deploy step will run only after manual approval
   deploy:
