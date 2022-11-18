@@ -19,7 +19,7 @@ jobs:
       # TODO: install aws cli   
       - run:
           name: install aws cli
-          command: sudo apt install python3-pip && sudo pip3 install awsebcli --upgrade
+          command: sudo apt-get update && sudo apt install python3-pip && sudo pip3 install awsebcli --upgrade
 
       # Use root level package.json to install dependencies in the frontend app
       - run:
