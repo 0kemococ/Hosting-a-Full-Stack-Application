@@ -16,11 +16,6 @@ jobs:
           node-version: '14.15'         
       - checkout
 
-      # TODO: install aws cli   
-      - run:
-          name: install aws cli
-          command: sudo apt-get update && sudo apt install python3-pip && sudo pip3 install awscli --upgrade
-
       # Use root level package.json to install dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
@@ -44,6 +39,11 @@ jobs:
       - run:
           name: API Build
           command: npm run api:build
+
+      # TODO: install aws cli   
+      - run:
+          name: install aws cli
+          command: sudo apt-get update && sudo apt install python3-pip && sudo pip3 install awscli --upgrade
 
       # TODO: deploy frontend    
       - run:
