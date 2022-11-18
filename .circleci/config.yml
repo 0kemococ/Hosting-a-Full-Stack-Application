@@ -42,30 +42,18 @@ jobs:
 
       # TODO: install aws cli   
       - run:
-          name: install aws cli
-          command: sudo apt-get update && sudo apt install python3-pip && sudo pip3 install awscli --upgrade
+          name: install aws cli and eb cli
+          command: sudo apt-get update && sudo apt install python3-pip && sudo pip3 install awscli --upgrade && sudo pip3 install awsebcli --upgrade
 
       # TODO: deploy frontend    
       - run:
           name: deploy frontend
           command: npm run frontend:deploy
 
-  # deploy step will run only after manual approval
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
-    steps:
-      - node/install:
-          node-version: '14.15' 
-      - eb/setup
-      - aws-cli/setup
-      - checkout
+      # TODO: deploy backend    
       - run:
-          name: Deploy App
-          # TODO: Install, build, deploy in both apps
-          command: npm run deploy
-
+          name: deploy backend
+          command: npm run api:deploy
             
 workflows:
   udagram:
